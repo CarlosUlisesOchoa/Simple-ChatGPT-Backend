@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "./node_modules/standard/eslintrc.json"
+  ],
+  "rules": {
+    "import/no-duplicates": "off",
+    "quotes": "off",
+    "block-spacing": "off",
+    "no-lone-blocks": "off",
+    "import/first": "off",
+    "object-curly-spacing": "off",
+    "jsx-quotes": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "space-before-function-paren": "off",
+    "no-unused-vars": "warn",
+    "no-undef": "error",
+    "no-multiple-empty-lines": "off",
+    "eol-last": "off",
+    "multiline-ternary": "off",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "ignore"
+      }
+    ]
+  },
+  "overrides": []
+}

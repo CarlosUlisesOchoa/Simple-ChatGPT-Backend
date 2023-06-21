@@ -9,6 +9,7 @@
 /app/en
 # testing
 /coverage
+/ignore-this-directory
 
 # production
 /build

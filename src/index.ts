@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express'
 import { Configuration, OpenAIApi } from 'openai'
 import { config } from 'dotenv'
 import { ChatCompletionParameters } from './types' // this is the interface for the expected data
+import { ResponseError } from './utils'
 
 config() // Load environment variables from .env file
 
@@ -38,18 +39,34 @@ app.post('/api/shane-gpt', async (req: Request, res: Response) => {
       presence_penalty: presence_penalty,
     })
 
+    if (response.status !== 200) {
+      throw new ResponseError(
+        response.status,
+        'Unexpected error occurred, please try again later.'
+      )
+    }
+
     return res.status(200).json({
       success: true,
-      data: response.data ?? null,
-      // data: response.data?.choices[0]?.message?.content,
+      data:
+        response.data?.choices[0]?.message?.content ??
+        `Sorry I can't answer right now.`,
     })
   } catch (error: any) {
-    return res.status(400).json({
-      success: false,
-      error: error.response
-        ? error.response.data
-        : 'There is a problem on the server.',
-    })
+    if (error instanceof ResponseError) {
+      return res.status(error.statusCode).json({
+        success: false,
+        error:
+          'There is a problem on the OpenAI server. Please try again later.',
+        // error: error.message,
+      })
+    } else {
+      return res.status(400).json({
+        success: false,
+        error: 'There is a problem on the server. Please try again later.',
+        // error: error.response.data?.error?.message ?? 'There is a problem on the server. Please try again later.',
+      })
+    }
   }
 })
 

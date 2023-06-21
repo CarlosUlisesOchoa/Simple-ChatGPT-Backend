@@ -48,7 +48,7 @@ app.post('/api/shane-gpt', async (req: Request, res: Response) => {
       success: false,
       error: error.response
         ? error.response.data
-        : 'There is a problem on the server, bro :(',
+        : 'There is a problem on the server.',
     })
   }
 })
@@ -65,10 +65,10 @@ const port: number = Number(process.env.PORT) || 3000
 
 console.log(`Trying to start server at port: ${port}...`)
 if (process.env.NODE_ENV === 'production') {
-  app.listen(port, () => console.log(`Server running at port: ${port}`))
+  app.listen(port, () => console.log(`Server running at port: ${port} !`))
 } else if (process.env.NODE_ENV === 'development') {
   app.listen(port, () =>
-    console.log(`Server running at: http://localhost:${port}`)
+    console.log(`Server running at: http://localhost:${port} !`)
   )
 } else {
   console.error(

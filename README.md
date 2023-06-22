@@ -4,7 +4,7 @@
 <p align="center">
 <a href="#!"><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/c26c0eba-6565-4175-a3b9-07022f8aff33" width="350" /></a>
 </p>
-<a href="#!"><img src="https://img.shields.io/badge/latest%20release-v0.3-blue" /></a>
+<a href="#!"><img src="https://img.shields.io/badge/latest%20release-v0.5-blue" /></a>
 <a href="#!"><img src="https://img.shields.io/tokei/lines/github/CarlosUlisesOchoa/Simple-ChatGPT-Backend" /></a>
 <a href="#!"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" /></a>
 </div>
@@ -19,6 +19,7 @@ Simple ChatGPT Backend is a basic Express.js app built with TypeScript. It provi
 <details>
 <summary>Table of Contents</summary>
 <ul>
+<li><a href="#screenshots">Screenshots</a></li>
 <li><a href="#prerequisites">Prerequisites</a></li>
 <li><a href="#how-to-run">How to Run</a></li>
 <li><a href="#environment-variables">Environment Variables</a></li>
@@ -28,6 +29,47 @@ Simple ChatGPT Backend is a basic Express.js app built with TypeScript. It provi
 </details>
 
 <br/>
+
+## Screenshots
+
+<p>Request and response examples:</p>
+
+<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/4f0a2667-f43e-4b96-9ec8-9729132a0f5e" alt="image" width=1106></p>
+
+```javascript
+const response = await fetch('http://localhost:3001/api/shane-gpt', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'gpt-3.5-turbo',
+    messages: [{ role: 'user', content: 'Who are you?' }],
+    stream: false,
+    max_tokens: 500,
+    temperature: 0.25,
+    top_p: 1,
+    frequency_penalty: 0.5,
+    presence_penalty: 0.5,
+  }),
+})
+
+const responseData = await response.json()
+
+console.log(responseData.data) // output: "I am an AI language model created by OpenAI."
+```
+
+<br/><br/><br/>
+
+<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/76efe824-76c8-4fb8-9f8a-56893f55c1c1" alt="image" xwidth=1106></p>
+
+```
+curl -X POST -H "Content-Type: application/json" -d "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"Who are you?\"}], \"stream\": false, \"max_tokens\": 500, \"temperature\": 0.25, \"top_p\": 1, \"frequency_penalty\": 0.5, \"presence_penalty\": 0.5}" http://localhost:3001/api/shane-gpt
+```
+
+<br/><br/><br/>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Prerequisites
 
@@ -56,7 +98,7 @@ npm install
 npm run dev
 ```
 
-The server will start and listen for requests on the port specified in your environment variables.
+The server will start and listen for requests on the port specified in your environment variables. (default port is 3001)
 
 <br/><br/>
 

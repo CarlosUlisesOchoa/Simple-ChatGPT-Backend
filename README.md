@@ -34,7 +34,7 @@ Simple ChatGPT Backend is a server-side Node.js application using Express.js tha
 
 <p>Request and response examples:</p>
 
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/4f0a2667-f43e-4b96-9ec8-9729132a0f5e" alt="image" width=1106></p>
+<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/a43b1228-a4e0-4ba3-b625-7da563b6ac1b" alt="image"></p>
 
 ```javascript
 const response = await fetch('http://localhost:3001/api/shane-gpt', {

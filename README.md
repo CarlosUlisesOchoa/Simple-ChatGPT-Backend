@@ -15,7 +15,7 @@ Simple ChatGPT Backend is a server-side Node.js application that uses Express.js
 
 This can be useful for those who wish to utilize the OpenAI's API without the risk of exposing their secret API keys.
 
-Please Note: Although our API key remains secure, our endpoint could potentially be subject to misuse. To enhance security, we should consider implementing features such as usage limitations, IP-based access controls, or user authentication. These measures can help prevent unauthorized or excessive use of our service.
+Please note: Although our API key will be secure, our endpoint could potentially be subject to misuse. To enhance security, you could consider implementing features such as usage limitations, IP-based access controls, or user authentication. These measures can help to prevent unauthorized or excessive use of our service.
 
 <hr/>
 <br/>

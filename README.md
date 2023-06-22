@@ -11,7 +11,7 @@
 
 <br/>
 
-Simple ChatGPT Backend is a basic Express.js app built with TypeScript. It provides an interface between a client applications and OpenAI's API.
+Simple ChatGPT Backend is a server-side Node.js application using Express.js that acts as a bridge between client-side applications and the OpenAI API, safeguarding sensitive API keys.
 
 <hr/>
 <br/>

@@ -20,7 +20,7 @@ app.post('/api/shane-gpt', async (req: Request, res: Response) => {
     const {
       model,
       messages,
-      stream,
+      // stream, // we will set this to false due to this is a simple example
       max_tokens,
       temperature,
       top_p,
@@ -31,7 +31,7 @@ app.post('/api/shane-gpt', async (req: Request, res: Response) => {
     const response = await openai.createChatCompletion({
       model: model,
       messages: messages,
-      stream: stream,
+      stream: false, // false by default
       max_tokens: max_tokens,
       temperature: temperature,
       top_p: top_p,

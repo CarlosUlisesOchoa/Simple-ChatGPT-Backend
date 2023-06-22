@@ -2,7 +2,7 @@
 export interface ChatCompletionParameters {
   model: string
   messages: Array<GPTMessage>
-  stream: boolean
+  // stream: boolean // this is not taken into account due to this is a simple example
   max_tokens: number
   temperature: number
   top_p: number

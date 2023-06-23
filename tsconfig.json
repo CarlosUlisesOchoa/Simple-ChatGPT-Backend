@@ -10,10 +10,11 @@
         "allowJs": true,
         "forceConsistentCasingInFileNames": true,
         "incremental": true,
+        "removeComments": true,
         "baseUrl": "."
     },
     "include": [
-        "./**/*.ts"
+        "./src/**/*.ts"
     ],
     "exclude": [
         "node_modules",

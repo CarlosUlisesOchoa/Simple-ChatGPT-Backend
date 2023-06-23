@@ -13,9 +13,9 @@
 
 Simple ChatGPT Backend is a server-side Node.js application that uses Express.js. It serves as a bridge between client-side applications and the OpenAI API, securely handling sensitive API keys.
 
-This can be extremely useful for those who wish to utilize the OpenAI API without the risk of exposing their secret API keys.
+This can be useful for those who wish to utilize the OpenAI's API without the risk of exposing their secret API keys.
 
-Please Note: Although our API key remains secure, our endpoint could potentially be subject to misuse. To enhance security, we should consider implementing features such as usage limitations, IP-based access controls, or user authentication. These measures can help prevent unauthorized or excessive use of our service.
+Please note: Although our API key will be secure, our endpoint could potentially be subject to misuse. To enhance security, you could consider implementing features such as usage limitations, IP-based access controls, or user authentication. These measures can help to prevent unauthorized or excessive use of our service.
 
 <hr/>
 <br/>
@@ -49,7 +49,6 @@ const response = await fetch('http://localhost:3001/api/shane-gpt', {
   body: JSON.stringify({
     model: 'gpt-3.5-turbo',
     messages: [{ role: 'user', content: 'Who are you?' }],
-    stream: false,
     max_tokens: 500,
     temperature: 0.25,
     top_p: 1,
@@ -68,7 +67,7 @@ console.log(responseData.data) // output: "I am an AI language model created by 
 <p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/76efe824-76c8-4fb8-9f8a-56893f55c1c1" alt="image" xwidth=1106></p>
 
 ```
-curl -X POST -H "Content-Type: application/json" -d "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"Who are you?\"}], \"stream\": false, \"max_tokens\": 500, \"temperature\": 0.25, \"top_p\": 1, \"frequency_penalty\": 0.5, \"presence_penalty\": 0.5}" http://localhost:3001/api/shane-gpt
+curl -X POST -H "Content-Type: application/json" -d "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"Who are you?\"}], \"max_tokens\": 500, \"temperature\": 0.25, \"top_p\": 1, \"frequency_penalty\": 0.5, \"presence_penalty\": 0.5}" http://localhost:3001/api/shane-gpt
 ```
 
 <br/><br/><br/>

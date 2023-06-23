@@ -41,7 +41,7 @@ Please note: Although our API key will be secure, our endpoint could potentially
 
 <p>You can send a simple or more complex request since all the parameters are optional, except for the "messages" parameter, of course.</p>
 
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/127c438c-b285-4561-bda7-a72c9362985b" alt="image"></p>
+<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/34601313-4fcc-4a7c-a5e2-99ba8343ecb4" alt="image"></p>
 
 ```javascript
 const response = await fetch('http://localhost:3001/api/shane-gpt', {

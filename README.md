@@ -37,9 +37,9 @@ Please note: Although our API key will be secure, our endpoint could potentially
 
 ## Screenshots
 
-<p>All the parameters that the OpenAI's API receives are available (except "stream")</p>
+<p>All the parameters that the OpenAI API receives are available, except for the "stream" parameter.</p>
 
-<p>You can send a simple or a more complex request, because all the parameters are optional (except the "messages" parameter, of course)</p>
+<p>You can send a simple or more complex request since all the parameters are optional, except for the "messages" parameter, of course.</p>
 
 <p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/127c438c-b285-4561-bda7-a72c9362985b" alt="image"></p>
 

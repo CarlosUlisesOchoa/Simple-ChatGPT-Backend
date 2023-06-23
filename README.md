@@ -37,11 +37,11 @@ Please note: Although our API key will be secure, our endpoint could potentially
 
 ## Screenshots
 
-<p>All the parameters that the OpenAI API receives are available, except for the "stream" parameter.</p>
+All the parameters that the OpenAI API receives are available, except for the "stream" parameter.
 
-<p>You can send a simple or more complex request since all the parameters are optional, except for the "messages" parameter, of course.</p>
+You can send a simple or more complex request since all the parameters are optional, except for the "messages" parameter, of course.
 
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/34601313-4fcc-4a7c-a5e2-99ba8343ecb4" alt="image"></p>
+<img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/34601313-4fcc-4a7c-a5e2-99ba8343ecb4" alt="image" width=916>
 
 ```javascript
 const response = await fetch('http://localhost:3001/api/shane-gpt', {
@@ -61,7 +61,7 @@ console.log(responseData.data) // output: "I am an AI language model created by 
 
 <br/><br/><br/>
 
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/683db5cd-2b99-403d-8292-de11f68354f8" alt="image"></p>
+<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/683db5cd-2b99-403d-8292-de11f68354f8" alt="image" width=928></p>
 
 ```
 curl -X POST -H "Content-Type: application/json" -d "{\"messages\": \"Who are you?\"}" http://localhost:3001/api/shane-gpt
@@ -69,10 +69,14 @@ curl -X POST -H "Content-Type: application/json" -d "{\"messages\": \"Who are yo
 
 <hr>
 
+<p>Click below to see a more complex request</p>
+
+<br>
+
 <details>
 <summary>Example of complex request</summary>
 <br>
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/a43b1228-a4e0-4ba3-b625-7da563b6ac1b" alt="image"></p>
+<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/a43b1228-a4e0-4ba3-b625-7da563b6ac1b" alt="image" width=916></p>
 
 ```javascript
 const response = await fetch('http://localhost:3001/api/shane-gpt', {
@@ -98,7 +102,7 @@ console.log(responseData.data) // output: "I am an AI language model created by 
 
 <br/><br/><br/>
 
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/76efe824-76c8-4fb8-9f8a-56893f55c1c1" alt="image"></p>
+<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/76efe824-76c8-4fb8-9f8a-56893f55c1c1" alt="image" width=928></p>
 
 ```
 curl -X POST -H "Content-Type: application/json" -d "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"Who are you?\"}], \"max_tokens\": 500, \"temperature\": 0.25, \"top_p\": 1, \"frequency_penalty\": 0.5, \"presence_penalty\": 0.5}" http://localhost:3001/api/shane-gpt

@@ -1,13 +1,12 @@
 // define the interface for your expected data
 export interface ChatCompletionParameters {
-  model: string
-  messages: Array<GPTMessage>
-  // stream: boolean // this is not taken into account due to this is a simple example
-  max_tokens: number
-  temperature: number
-  top_p: number
-  frequency_penalty: number
-  presence_penalty: number
+  model?: string // optional
+  messages: string | Array<GPTMessage> // required, user can send a simple string or an array of GPTMessage (role, content) see types.d.ts (GPTMessage)
+  max_tokens?: number // optional
+  temperature?: number // optional
+  top_p?: number // optional
+  frequency_penalty?: number // optional
+  presence_penalty?: number // optional
 }
 
 export type GPTMessage = {

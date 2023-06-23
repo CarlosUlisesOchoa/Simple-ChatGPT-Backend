@@ -150,17 +150,17 @@ The server will start and listen for requests on the port specified in your envi
 
 - `OPENAI_API_KEY`: Your OpenAI's API Key. <i>(Required)</i>
 
-- `OPENAI_API_DEFAULT_MODEL`: This key specifies the default model to use when making API requests. In this case, the value is set to "gpt-3.5-turbo," which indicates that the GPT-3.5 Turbo model will be used by default. This model is optimized for performance and cost-effectiveness. <i>(Optional, check default value in: .env.template)</i>
+- `OPENAI_API_DEFAULT_MODEL`: Default model to use when making API requests. <i>(Optional, check default value in: .env.template)</i>
 
-- `OPENAI_API_DEFAULT_MAX_TOKENS`: This key determines the maximum number of tokens that can be generated in a single API response. Tokens are chunks of text, and the total number of tokens affects the cost and duration of an API call. The value "4000" sets the default maximum tokens to 4000, meaning the generated response will not exceed this token limit. <i>(Optional, check default value in: .env.template)</i>
+- `OPENAI_API_DEFAULT_MAX_TOKENS`: Determines the maximum number of tokens that can be generated in a single API response. Tokens are chunks of text, and the total number of tokens affects the cost and duration of an API call. <i>(Optional, check default value in: .env.template)</i>
 
-- `OPENAI_API_DEFAULT_TEMPERATURE`: This key controls the randomness of the generated text. A higher temperature value, such as 1.0, produces more random and creative responses, while a lower value, like 0.25, generates more focused and deterministic responses. The value "0.25" sets the default temperature to 0.25. <i>(Optional, check default value in: .env.template)</i>
+- `OPENAI_API_DEFAULT_TEMPERATURE`: This controls the randomness of the generated text. A higher temperature value, such as 1.0, produces more random and creative responses, while a lower value, like 0.25, generates more focused and deterministic responses. <i>(Optional, check default value in: .env.template)</i>
 
-- `OPENAI_API_DEFAULT_TOP_P`: This key determines the diversity of the generated text. It uses the top-p sampling technique, where the model only considers the most probable tokens that add up to a cumulative probability (p). A higher value, like 1.0, allows more options and can lead to more varied responses. The value "1" sets the default top-p to 1. <i>(Optional, check default value in: .env.template)</i>
+- `OPENAI_API_DEFAULT_TOP_P`: Determines the diversity of the generated text. It uses the top-p sampling technique, where the model only considers the most probable tokens that add up to a cumulative probability (p). A higher value, like 1.0, allows more options and can lead to more varied responses. <i>(Optional, check default value in: .env.template)</i>
 
-- `OPENAI_API_DEFAULT_FREQUENCY_PENALTY`: This key adjusts the frequency penalty during text generation. A higher penalty discourages the model from repeating the same phrases or tokens. The value "0.5" sets the default frequency penalty to 0.5. <i>(Optional, check default value in: .env.template)</i>
+- `OPENAI_API_DEFAULT_FREQUENCY_PENALTY`: This key adjusts the frequency penalty during text generation. A higher penalty discourages the model from repeating the same phrases or tokens. <i>(Optional, check default value in: .env.template)</i>
 
-- `OPENAI_API_DEFAULT_PRESENCE_PENALTY`: This key controls the presence penalty during text generation. It discourages the model from focusing on specific phrases or words by reducing their likelihood. The value "0.5" sets the default presence penalty to 0.5. <i>(Optional, check default value in: .env.template)</i>
+- `OPENAI_API_DEFAULT_PRESENCE_PENALTY`: Controls the presence penalty during text generation. It discourages the model from focusing on specific phrases or words by reducing their likelihood. The value "0.5" sets the default presence penalty to 0.5. <i>(Optional, check default value in: .env.template)</i>
 
 Note: Instructions on how to get the OpenAI API key value can be found in the [How to get OpenAI API key value](#how-to-get-openai-api-key-value) section.
 

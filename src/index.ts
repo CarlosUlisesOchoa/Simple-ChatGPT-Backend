@@ -1,10 +1,15 @@
 import express, { Request, Response } from 'express'
 import { Configuration, OpenAIApi } from 'openai'
 import { config } from 'dotenv'
-import { ChatCompletionParameters } from './types' // this is the interface for the expected data
-import { ResponseError } from './utils'
+import { ChatCompletionParameters, GPTMessage } from './types' // this is the interface for the expected data
+import { ResponseError, validateEnvTypes, isGPTMessage } from './utils'
+import startServer from './server'
 
-config() // Load environment variables from .env file
+const envValues = config() // Load environment variables from .env file
+
+validateEnvTypes(envValues) // Validate environment variables
+
+console.log(`Trying to start server at port: ${process.env.PORT}...`)
 
 const app = express()
 app.use(express.json())
@@ -15,49 +20,69 @@ const openaiConfig = new Configuration({
 
 const openai = new OpenAIApi(openaiConfig)
 
+const port = Number(envValues.parsed?.PORT) || 3001
+
+startServer(app, port)
+
+/* //////////////////////////
+//
+//
+// Routes */
+
 app.post('/api/shane-gpt', async (req: Request, res: Response) => {
   try {
     const {
-      model,
-      messages,
+      model, // optional, if not provided, it will use the environment variable value (.env file)
+      messages, // required, user can send a simple string or an array of GPTMessage (role, content) see types.d.ts (GPTMessage)
       // stream, // we will set this to false due to this is a simple example
-      max_tokens,
-      temperature,
-      top_p,
-      frequency_penalty,
-      presence_penalty,
+      max_tokens, // optional, if not provided, it will use the environment variable value (.env file)
+      temperature, // optional, if not provided, it will use the environment variable value (.env file)
+      top_p, // optional, if not provided, it will use the environment variable value (.env file)
+      frequency_penalty, // optional, if not provided, it will use the environment variable value (.env file)
+      presence_penalty, // optional, if not provided, it will use the environment variable value (.env file)
     } = req.body as ChatCompletionParameters
 
+    let finalMessages: Array<GPTMessage> | undefined = undefined
+
+    // lookup for the messages parameter, look for a single plain string or an array of GPTMessage (role, content) see types.d.ts (GPTMessage)
+    if (Array.isArray(messages) && messages.every((m) => isGPTMessage(m))) {
+      finalMessages = messages
+    } else if (typeof messages === 'string' && messages.length > 0) {
+      finalMessages = [{ role: 'user', content: messages }]
+    } else {
+      throw new ResponseError(400, `You sent an invalid "messages" parameter value. Please provide a valid value.`)
+    }
+
+    let finalModel = process.env.OPENAI_API_DEFAULT_MODEL || 'gpt-3.5-turbo'
+
+    if (model) {
+      finalModel = model
+    }
+
     const response = await openai.createChatCompletion({
-      model: model,
-      messages: messages,
-      stream: false, // false by default
-      max_tokens: max_tokens,
-      temperature: temperature,
-      top_p: top_p,
-      frequency_penalty: frequency_penalty,
-      presence_penalty: presence_penalty,
+      model: finalModel,
+      messages: finalMessages,
+      stream: false,
+      max_tokens: max_tokens || Number(process.env.OPENAI_API_DEFAULT_MAX_TOKENS),
+      temperature: temperature || Number(process.env.OPENAI_API_DEFAULT_TEMPERATURE),
+      top_p: top_p || Number(process.env.OPENAI_API_DEFAULT_TOP_P),
+      frequency_penalty: frequency_penalty || Number(process.env.OPENAI_API_DEFAULT_FREQUENCY_PENALTY),
+      presence_penalty: presence_penalty || Number(process.env.OPENAI_API_DEFAULT_PRESENCE_PENALTY),
     })
 
     if (response.status !== 200) {
-      throw new ResponseError(
-        response.status,
-        'Unexpected error occurred, please try again later.'
-      )
+      throw new ResponseError(response.status, 'Unexpected error occurred, please try again later.')
     }
 
     return res.status(200).json({
       success: true,
-      data:
-        response.data?.choices[0]?.message?.content ??
-        `Sorry I can't answer right now.`,
+      data: response.data?.choices[0]?.message?.content ?? `Sorry I can't answer right now.`,
     })
   } catch (error: any) {
     if (error instanceof ResponseError) {
       return res.status(error.statusCode).json({
         success: false,
-        error:
-          'There is a problem on the OpenAI server. Please try again later.',
+        error: 'There is a problem on the OpenAI server. Please try again later.',
         // error: error.message,
       })
     } else {
@@ -73,22 +98,3 @@ app.post('/api/shane-gpt', async (req: Request, res: Response) => {
 app.get('/', (req, res) => {
   res.send(`Hello, TypeScript in Express! NODE_ENV: ${process.env.NODE_ENV}`)
 })
-
-if (!openaiConfig.apiKey) {
-  throw new Error('OPENAI_API_KEY is not set, check your .env file')
-}
-
-const port: number = Number(process.env.PORT) || 3000
-
-console.log(`Trying to start server at port: ${port}...`)
-if (process.env.NODE_ENV === 'production') {
-  app.listen(port, () => console.log(`Server running at port: ${port} !`))
-} else if (process.env.NODE_ENV === 'development') {
-  app.listen(port, () =>
-    console.log(`Server running at: http://localhost:${port} !`)
-  )
-} else {
-  console.error(
-    'Cannot set NODE_ENV, check your package.json file in scripts section'
-  )
-}

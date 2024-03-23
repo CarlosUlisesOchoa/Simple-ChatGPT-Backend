@@ -22,6 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.3.1",
+    "concurrently": "^8.2.2",
     "eslint": "^8.43.0",
     "prettier": "^2.8.8",
     "standard": "^17.1.0",

@@ -1,6 +1,4 @@
-import { DotenvConfigOutput } from 'dotenv'
-
-export function validateEnvTypes(envValues: DotenvConfigOutput) {
+export function validateEnvTypes() {
   const envVariables = {
     OPENAI_API_KEY: 'string',
     OPENAI_API_DEFAULT_MODEL: 'string',
@@ -13,13 +11,22 @@ export function validateEnvTypes(envValues: DotenvConfigOutput) {
   }
 
   for (let variable in envVariables) {
-    const value = envValues.parsed?.[variable] || ''
-    if (value.length === 0) {
+    const value = process.env[variable]
+    if (!value) {
       throw new Error(`${variable} is not set, check your .env file`)
     }
-
-    if (envVariables[variable] === 'number' && isNaN(Number(value))) {
-      throw new Error(`${variable} must be a number, check your .env file`)
+    if (envVariables[variable] === 'string') {
+      let valuePreview = value
+      if (valuePreview.length > 16) {
+        valuePreview = valuePreview.slice(0, 16) + '...'
+      }
+      console.log(`${variable}: ${valuePreview}`)
+    } else if (envVariables[variable] === 'number') {
+      const numericValue = Number(value)
+      console.log(`${variable}: ${value}`)
+      if (isNaN(numericValue)) {
+        throw new Error(`${variable} must be a number, check your .env file`)
+      }
     }
   }
 }

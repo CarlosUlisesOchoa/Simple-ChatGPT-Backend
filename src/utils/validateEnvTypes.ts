@@ -20,10 +20,10 @@ export function validateEnvTypes() {
       if (valuePreview.length > 16) {
         valuePreview = valuePreview.slice(0, 16) + '...'
       }
-      console.log(`${variable}: ${valuePreview}`) // tetemp
+      console.log(`${variable}: ${valuePreview}`)
     } else if (envVariables[variable] === 'number') {
       const numericValue = Number(value)
-      console.log(`${variable}: ${value}`) // tetemp
+      console.log(`${variable}: ${value}`)
       if (isNaN(numericValue)) {
         throw new Error(`${variable} must be a number, check your .env file`)
       }

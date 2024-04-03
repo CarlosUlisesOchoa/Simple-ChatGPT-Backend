@@ -4,8 +4,7 @@
 <p align="center">
 <a href="#!"><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/c26c0eba-6565-4175-a3b9-07022f8aff33" width="350" /></a>
 </p>
-<a href="#!"><img src="https://img.shields.io/badge/latest%20release-v0.8-blue" /></a>
-<a href="#!"><img src="https://img.shields.io/tokei/lines/github/CarlosUlisesOchoa/Simple-ChatGPT-Backend" /></a>
+<a href="#!"><img src="https://img.shields.io/badge/latest%20release-v1.1.0-blue" /></a>
 <a href="#!"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" /></a>
 </div>
 
@@ -20,9 +19,6 @@ Please note: Although our API key will be secure, our endpoint could potentially
 <hr/>
 <br/>
 
-<details>
-<summary>Table of Contents</summary>
-<br>
 <ul>
 <li><a href="#screenshots">Screenshots</a></li>
 <li><a href="#prerequisites">Prerequisites</a></li>
@@ -31,7 +27,6 @@ Please note: Although our API key will be secure, our endpoint could potentially
 <li><a href="#how-to-get-openai-api-key-value">How to get OpenAI API key value</a></li>
 <li><a href="#about-developer">About Developer</a></li>
 </ul>
-</details>
 
 <br/>
 
@@ -41,22 +36,18 @@ All the parameters that the OpenAI API receives are available, except for the "s
 
 You can send a simple or more complex request since all the parameters are optional, except for the "messages" parameter, of course.
 
-<img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/34601313-4fcc-4a7c-a5e2-99ba8343ecb4" alt="image" width=916>
+![image](https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/3abbd30a-0ee9-4766-993d-2c30e955e425)
 
 ```javascript
-const response = await fetch('http://localhost:3001/api/shane-gpt', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    messages: 'Who are you?',
-  }),
-})
-
-const responseData = await response.json()
-
-console.log(responseData.data) // output: "I am an AI language model created by OpenAI."
+const response = await fetch('http://127.0.0.1:3001/api/openai', {
+    method: 'POST',
+    headers: {'Content-Type' : 'application/json'},
+    body: JSON.stringify({
+      message: 'who are u?'
+    })
+});
+const responseData = await response.json();
+console.log(responseData);
 ```
 
 <br/><br/><br/>
@@ -64,52 +55,8 @@ console.log(responseData.data) // output: "I am an AI language model created by 
 <p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/683db5cd-2b99-403d-8292-de11f68354f8" alt="image" width=928></p>
 
 ```
-curl -X POST -H "Content-Type: application/json" -d "{\"messages\": \"Who are you?\"}" http://localhost:3001/api/shane-gpt
+curl -X POST -H "Content-Type: application/json" -d "{\"message\": \"Who are you?\"}" http://localhost:3001/api/openai
 ```
-
-<hr>
-
-<p>Click below to see a more complex request</p>
-
-<br>
-
-<details>
-<summary>Example of complex request</summary>
-<br>
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/a43b1228-a4e0-4ba3-b625-7da563b6ac1b" alt="image" width=916></p>
-
-```javascript
-const response = await fetch('http://localhost:3001/api/shane-gpt', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: 'Who are you?' }],
-    max_tokens: 500,
-    temperature: 0.25,
-    top_p: 1,
-    frequency_penalty: 0.5,
-    presence_penalty: 0.5,
-  }),
-})
-
-const responseData = await response.json()
-
-console.log(responseData.data) // output: "I am an AI language model created by OpenAI."
-```
-
-<br/><br/><br/>
-
-<p><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/76efe824-76c8-4fb8-9f8a-56893f55c1c1" alt="image" width=928></p>
-
-```
-curl -X POST -H "Content-Type: application/json" -d "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"Who are you?\"}], \"max_tokens\": 500, \"temperature\": 0.25, \"top_p\": 1, \"frequency_penalty\": 0.5, \"presence_penalty\": 0.5}" http://localhost:3001/api/shane-gpt
-```
-</details>
-
-
 
 <br/><br/><br/>
 
@@ -119,7 +66,7 @@ curl -X POST -H "Content-Type: application/json" -d "{\"model\": \"gpt-3.5-turbo
 
 In order to run this application, you will need:
 
-- Node.js 12 or higher
+- Node.js 20.6 or higher
 - An OpenAI API key ([How to get it?](#how-to-get-openai-api-key-value))
 
 <br/><br/>

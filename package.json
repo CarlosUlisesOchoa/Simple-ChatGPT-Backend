@@ -30,7 +30,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "express": "5.0.0",
+    "express": "5.0.1",
     "openai": "4.29.2"
   }
 }

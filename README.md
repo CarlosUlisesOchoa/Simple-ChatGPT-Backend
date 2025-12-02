@@ -36,6 +36,9 @@ All the parameters that the OpenAI API receives are available, except for the "s
 
 You can send a simple or more complex request since all the parameters are optional, except for the "messages" parameter, of course.
 
+<img width="2940" height="4639" alt="localhost_3001_swagger_(iPhone 14 Pro Max)" src="https://github.com/user-attachments/assets/60042598-d415-4816-8f53-7f15fd5acc4e" />
+
+
 ![image](https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/3abbd30a-0ee9-4766-993d-2c30e955e425)
 
 ```javascript

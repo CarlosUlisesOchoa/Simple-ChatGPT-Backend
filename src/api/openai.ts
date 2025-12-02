@@ -76,6 +76,48 @@ async function handlePostRequest(req: Request, res: Response): Promise<void> {
   }
 }
 
+/**
+ * @swagger
+ * /api/openai:
+ *   post:
+ *     summary: Send a message to OpenAI
+ *     tags: [OpenAI]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - message
+ *             properties:
+ *               message:
+ *                 type: string
+ *                 description: The message to send to OpenAI
+ *     responses:
+ *       200:
+ *         description: The response from OpenAI
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 response:
+ *                   type: string
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 error:
+ *                   type: string
+ */
 export default async function openAIHandler(req: Request, res: Response): Promise<void> {
   if (req.method === 'POST') {
     await handlePostRequest(req, res)

@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "express": "5.0.0",
-    "openai": "4.29.2"
+    "openai": "^6.9.1"
   }
 }

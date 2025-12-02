@@ -5,6 +5,8 @@ const openai = new OpenAI({
   // Don't worry apiKey and organization will be read automatically from .env file
   // apiKey: process.env.OPENAI_API_KEY,
   // organization: process.env.OPENAI_ORG_ID,
+  baseURL: process.env.OPENAI_BASE_URL,
+  // logLevel: process.env.OPENAI_API_LOG_LEVEL as any, // Cast to any to avoid type issues if the SDK types are strict
   // More options:
   // timeout?: number,
   // httpAgent?: any,
@@ -31,9 +33,10 @@ async function handlePostRequest(req: Request, res: Response): Promise<void> {
       throw new Error('Empty message')
     }
 
-    let model = process.env.OPENAI_API_DEFAULT_MODEL || 'gpt-3.5-turbo'
+    let model = process.env.OPENAI_API_DEFAULT_MODEL || 'gpt-4o-mini'
+    const reasoningEffort = process.env.OPENAI_API_DEFAULT_REASONING_EFFORT || 'medium'
 
-    const response = await openai.chat.completions.create({
+    const completionParams: any = {
       model,
       messages: [
         {
@@ -45,7 +48,17 @@ async function handlePostRequest(req: Request, res: Response): Promise<void> {
           content: cleanMessage,
         },
       ],
-    })
+    }
+
+    // Add reasoning_effort only if the model supports it (e.g., o1, o3)
+    // For simplicity, we can add it if the env var is set, but ideally we check the model name.
+    // However, the SDK might throw if we send it for unsupported models.
+    // Let's assume the user knows what they are doing if they set the model to an 'o' series model.
+    if (model.startsWith('o')) {
+       completionParams.reasoning_effort = reasoningEffort
+    }
+
+    const response = await openai.chat.completions.create(completionParams)
     const content = response?.choices[0]?.message?.content
 
     if (!content || content.length === 0) {

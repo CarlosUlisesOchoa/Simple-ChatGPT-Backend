@@ -36,6 +36,9 @@ All the parameters that the OpenAI API receives are available, except for the "s
 
 You can send a simple or more complex request since all the parameters are optional, except for the "messages" parameter, of course.
 
+<img width="2940" height="4639" alt="localhost_3001_swagger_(iPhone 14 Pro Max)" src="https://github.com/user-attachments/assets/60042598-d415-4816-8f53-7f15fd5acc4e" />
+
+
 ![image](https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/3abbd30a-0ee9-4766-993d-2c30e955e425)
 
 ```javascript
@@ -101,7 +104,7 @@ The server will start and listen for requests on the port specified in your envi
 
 - `OPENAI_API_KEY`: Your OpenAI's API Key. <i>(Required)</i>
 
-- `OPENAI_API_DEFAULT_MODEL`: Default model to use when making API requests. <i>(Optional, check default value in: .env.template)</i>
+- `OPENAI_API_DEFAULT_MODEL`: Default model to use when making API requests. <i>(Optional, check default value in: .env.template)</i>. See [Available Models](#available-models) for options.
 
 - `OPENAI_API_DEFAULT_MAX_TOKENS`: Determines the maximum number of tokens that can be generated in a single API response. Tokens are chunks of text, and the total number of tokens affects the cost and duration of an API call. <i>(Optional, check default value in: .env.template)</i>
 
@@ -113,7 +116,30 @@ The server will start and listen for requests on the port specified in your envi
 
 - `OPENAI_API_DEFAULT_PRESENCE_PENALTY`: Controls the presence penalty during text generation. It discourages the model from focusing on specific phrases or words by reducing their likelihood. The value "0.5" sets the default presence penalty to 0.5. <i>(Optional, check default value in: .env.template)</i>
 
+- `OPENAI_BASE_URL`: Override the base URL for the OpenAI API. Useful for using alternative providers like OpenRouter or local proxies. <i>(Optional)</i>
+
+- `OPENAI_API_LOG_LEVEL`: Set the logging level for the OpenAI client (e.g., `debug`, `info`, `warn`, `error`). <i>(Optional, default: info)</i>
+
+- `OPENAI_API_DEFAULT_REASONING_EFFORT`: Set the reasoning effort for supported models (e.g., `o1`, `o3`). Options: `low`, `medium`, `high`. <i>(Optional, default: medium)</i>
+
 Note: Instructions on how to get the OpenAI API key value can be found in the [How to get OpenAI API key value](#how-to-get-openai-api-key-value) section.
+
+<br/><br/>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Available Models
+
+The following models are commonly used and supported by this backend (though any chat model supported by OpenAI API should work):
+
+- `gpt-4o`: High-intelligence flagship model for complex, multi-step tasks.
+- `gpt-4o-mini`: Affordable and intelligent small model for fast, lightweight tasks. (Default)
+- `gpt-5.1`: Latest flagship model with improved steerability and agentic capabilities.
+- `o3`: High-intelligence reasoning model.
+- `o4-mini`: Cost-effective reasoning model.
+- `gpt-4-turbo`: Previous high-intelligence model.
+
+For a complete and up-to-date list of models, visit the [OpenAI Models Documentation](https://platform.openai.com/docs/models).
 
 <br/><br/>
 

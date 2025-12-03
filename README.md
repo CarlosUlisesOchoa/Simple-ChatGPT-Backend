@@ -4,7 +4,7 @@
 <p align="center">
 <a href="#!"><img src="https://github.com/CarlosUlisesOchoa/Simple-ChatGPT-Backend/assets/26280134/c26c0eba-6565-4175-a3b9-07022f8aff33" width="350" /></a>
 </p>
-<a href="#!"><img src="https://img.shields.io/badge/latest%20release-v1.1.0-blue" /></a>
+<a href="#!"><img src="https://img.shields.io/badge/latest%20release-v6.9.1-blue" /></a>
 <a href="#!"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen" /></a>
 </div>
 

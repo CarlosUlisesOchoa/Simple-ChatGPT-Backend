@@ -159,7 +159,7 @@ For a complete and up-to-date list of models, visit the [OpenAI Models Documenta
 
 ## About developer
 
-Visit my web [Carlos Ochoa](https://carlos8a.com)
+Visit my web [Carlos Ochoa](https://carlos8a.com?ref=gh)
 
 <br/>
 
